@@ -297,11 +297,20 @@ namespace Microsoft.Bot.Builder.FormFlow
                     next = result.Next;
                     if (result.Feedback?.Prompt != null)
                     {
-                        await PostAsync(result.Feedback, step);
+                        if (result.Feedback.Prompt != string.Empty)
+                        {
+                            await PostAsync(result.Feedback, step);
+                        }
+
                         if (_formState.Phase() != StepPhase.Completed)
                         {
                             if (!_formState.ProcessInputs)
                             {
+                                if (!string.IsNullOrEmpty(result.PromptOverride))
+                                {
+                                    lastPrompt.Prompt = result.PromptOverride;
+                                }
+
                                 await PostAsync(lastPrompt, step);
                                 waitForMessage = true;
                             }

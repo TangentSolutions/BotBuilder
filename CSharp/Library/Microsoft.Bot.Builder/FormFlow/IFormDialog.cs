@@ -82,6 +82,9 @@ namespace Microsoft.Bot.Builder.FormFlow
         /// <summary>   Feedback to provide back to the user on the input. </summary>
         public string Feedback;
 
+        /// <summary> Message to override the last prompt. </summary>
+        public string PromptOverride;
+
         /// <summary>
         /// Fully specified feedback card.
         /// </summary>

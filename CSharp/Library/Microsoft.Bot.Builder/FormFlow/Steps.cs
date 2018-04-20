@@ -314,7 +314,7 @@ namespace Microsoft.Bot.Builder.FormFlow.Advanced
                 }
             }
             var next = _field.Next(response, state);
-            return new StepResult(feedback.IsValid, next, feedbackPrompt ?? (feedback.FeedbackCard ?? new FormPrompt { Prompt = feedback.Feedback }), prompt);
+            return new StepResult(feedback.IsValid, next, feedbackPrompt ?? (feedback.FeedbackCard ?? new FormPrompt { Prompt = feedback.Feedback }), prompt, feedback.PromptOverride);
         }
 
         public bool InClarify(FormState form)
